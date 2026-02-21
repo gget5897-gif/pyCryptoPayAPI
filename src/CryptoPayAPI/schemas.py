@@ -83,51 +83,26 @@ class UpdateType(Enum):
 
 
 class Invoice(BaseModel):
-    '''Invoice info.
-
-    Attributes:
-        invoice_id (int): Unique ID for this invoice.
-        status (InvoiceStatus): Status of the invoice.
-        hash (str): Hash of the invoice.
-        asset (Assets): Currency code.
-        amount (Decimal): Amount of the invoice.
-        pay_url (str): URL should be presented to the user to pay the invoice.
-        description (Optional[str]): *Optional*. Description for this invoice.
-        created_at (datetime): Date the invoice was created in ISO 8601 format.
-        allow_comments (bool): `True`, if the user can add comment to the payment.
-        allow_anonymous (bool): `True`, if the user can pay the invoice anonymously.
-        expiration_date (Optional[datetime]): *Optional*. Date the invoice expires in Unix time.
-        paid_at (Optional[datetime]): *Optional*. Date the invoice was paid in Unix time.
-        paid_anonymously (Optional[bool]): `True`, if the invoice was paid anonymously.
-        comment (Optional[str]): *Optional*. Comment to the payment from the user.
-        hidden_message (Optional[str]): *Optional*. Text of the hidden message for this invoice.
-        payload (Optional[str]): *Optional*. Previously provided data for this invoice.
-        paid_btn_name (Optional[PaidButtonNames]): *Optional*. Name of the button.
-        paid_btn_url (Optional[str]): *Optional*. URL of the button.
-        fee (Optional[Decimal]): *Optional*. Amount of charged service fees. Returned only if the invoice has paid status.
-        usd_rate (Optional[Decimal]): *Optional*. Price of the asset in USD. Returned only if the invoice has paid status.
-    '''
     invoice_id: int
     status: InvoiceStatus
     hash: str
     asset: Assets
     amount: Decimal
     pay_url: str
-    description: Optional[str]
+    description: Optional[str] = None
     created_at: datetime
     allow_comments: bool
     allow_anonymous: bool
-    expiration_date: Optional[datetime]
-    paid_at: Optional[datetime]
-    paid_anonymously: Optional[bool]
-    comment: Optional[str]
-    hidden_message: Optional[str]
-    payload: Optional[str]
-    paid_btn_name: Optional[PaidButtonNames]
-    paid_btn_url: Optional[str]
-    fee: Optional[Decimal]
-    usd_rate: Optional[Decimal]
-
+    expiration_date: Optional[datetime] = None
+    paid_at: Optional[datetime] = None
+    paid_anonymously: Optional[bool] = None
+    comment: Optional[str] = None
+    hidden_message: Optional[str] = None
+    payload: Optional[str] = None
+    paid_btn_name: Optional[PaidButtonNames] = None
+    paid_btn_url: Optional[str] = None
+    fee: Optional[Decimal] = None
+    usd_rate: Optional[Decimal] = None
 
 class Transfer(BaseModel):
     '''Transfer info.
